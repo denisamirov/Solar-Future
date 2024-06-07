@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "arturito-slab";
+  src: url('/fonts/arturito-slab.ttf');
+}
+
+* {
+  font-family: "arturito-slab";
+}

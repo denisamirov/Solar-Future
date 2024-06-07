@@ -1,0 +1,23 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const cors = require('./middlewares/cors');
+const { server, setClient } = require('./utils/tcp');
+const switchRouter = require('./routes/switch');
+const connectToDatabase = require('./database/connect')
+
+const app = express();
+const port = process.env.PORT || 4000;
+connectToDatabase()
+
+app.use(cors, 
+        bodyParser.json(), 
+        express.static(path.join(__dirname, 'public')),
+        switchRouter);
+app.get('/', (req, res) => {
+  res.send('Home Route');
+});
+
+app.listen(port, () =>
+  console.log(`Server running on port ${port}, http://localhost:${port}`)
+);

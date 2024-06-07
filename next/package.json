@@ -1,0 +1,26 @@
+{
+  "name": "front",
+  "version": "0.1.0",
+  "description": "Frontend for pet-projet Solar Future",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.2.5",
+    "bootstrap": "^5.3.3",
+    "next": "14.2.3",
+    "react": "^18",
+    "react-bootstrap": "^2.10.2",
+    "react-dom": "^18",
+    "react-redux": "^9.1.2",
+    "redux-toolkit": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.2",
+    "typescript": "5.4.5"
+  }
+}

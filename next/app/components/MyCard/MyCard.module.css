@@ -1,0 +1,37 @@
+.card {
+    width: 18rem;
+    transition-duration: 1s;
+    border: none;
+    border-radius: 20px;
+}
+
+.card:hover {
+    background-color: rgba(241, 241, 241, 0.727);
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+.card__on {
+    
+    border: none;
+    max-width: 50px;
+}
+
+.card__on_body {
+    background-color: rgb(247 228 87 / 97%);
+    display: flex;
+    justify-content: center;
+}
+
+
+.card__off {
+    
+    border: none;
+    max-width: 50px;
+}
+
+.card__off_body {
+    background-color: rgb(25 63 142);
+    display: flex;
+    justify-content: center;
+}
