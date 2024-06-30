@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:4000/api';
+export const BASE_URL = 'http://1270.0.0.1:4000/api';
 
 export const endpoints = {
   switch: `${BASE_URL}/digital_pins/action`,
