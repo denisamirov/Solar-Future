@@ -4,9 +4,9 @@ import Styles from './CardsList.module.css'
 export const CardsList = (props) => {
     return (
         <div className={Styles["CardsList"]}>
-            {props.data.map((item) => {
+            {props.data && props.data.map((item) => {
                 return (
-                    <MyCard key={item.id} data={item} />
+                    <MyCard key={item._id} data={item} params={props.params} />
                 )
             })}
         </div>

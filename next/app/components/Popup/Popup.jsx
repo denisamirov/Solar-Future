@@ -1,13 +1,20 @@
 import Styles from "./Popup.module.css";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { closePopup } from "../../redux/features/counter/counterSlice";
 
 export const Popup = (props) => {
+  const isOpened = useSelector((state) => state.counter.popupIsOpened)
+  const id = useSelector((state) => state.counter.popupId)
+  const dispatch = useDispatch();
+
   return (
     <div
       className={`${Styles["popup"]} ${
-        props.isOpened && Styles["popup_is-opened"]
+        isOpened && props.id == id && Styles["popup_is-opened"]
       }`}
     >
-      <button className={Styles["close"]} onClick={() => props.close()}>
+      <button className={Styles["close"]} onClick={() => dispatch(closePopup())}>
         <svg
           className={Styles["close-icon"]}
           xmlns="http://www.w3.org/2000/svg"

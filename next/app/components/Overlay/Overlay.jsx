@@ -1,13 +1,20 @@
 'use client';
 import Styles from "./Overlay.module.css";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { closePopup } from "../../redux/features/counter/counterSlice";
 
-export const Overlay = (props) => {
+export const Overlay = () => {
+
+  const popupIsOpened = useSelector((state) => state.counter.popupIsOpened)
+  const dispatch = useDispatch()
+
   return (
     <div
       className={`${Styles["overlay"]} ${
-        props.isOpened && Styles["overlay_is-opened"]
+        popupIsOpened && Styles["overlay_is-opened"]
       }`}
-      onClick={() => props.close()}
+      onClick={() => dispatch(closePopup()) }
     ></div>
   );
 };

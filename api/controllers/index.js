@@ -1,4 +1,4 @@
-const sendDigitalWrite = require('./digitalWrite')
-const login = require('./auth')
+const sendArduinoData = require('./ArduinoData')
+const { login } = require('./auth')
 
-module.exports = { sendDigitalWrite, login }
+module.exports = { sendArduinoData, login }

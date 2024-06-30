@@ -27,11 +27,18 @@
 
 #### Запуск c использованием Docker
 1. docker up docker-compose.yml
+2. Адрес хоста для docker - host.docker.internal
 
 
 #### Запуск без использования Docker
+##### Запуск backend
 1. cd api
-2. npm run dev
-3. cd next 
-4. npm run dev
-5. 
+2. npm i
+3. npm run dev
+##### Запуск frontend
+1. cd next 
+2. npm i
+3. npm run dev
+##### Запуск mongod
+1. cd mongo/db 
+2. mongod --dbpath ./ --port 27017

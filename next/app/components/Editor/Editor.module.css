@@ -1,0 +1,9 @@
+.editor__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+    row-gap: 10px;
+    column-gap: 10px;
+    flex-wrap: wrap;
+}

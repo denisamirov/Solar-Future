@@ -1,0 +1,9 @@
+.FormOrder__container {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0px 5px;
+}

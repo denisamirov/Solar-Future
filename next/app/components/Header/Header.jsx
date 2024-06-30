@@ -3,29 +3,34 @@ import { Button } from "react-bootstrap"
 import { Navbar } from "react-bootstrap"
 import { Container } from "react-bootstrap"
 import { Nav } from "react-bootstrap"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { AuthForm } from "../AuthForm/AuthForm"
-import { Overlay } from "../Overlay/Overlay"
 import { Popup } from "../Popup/Popup"
-
+import { useDispatch } from "react-redux"
+import { logout, openPopup, closePopup } from '../../redux/features/counter/counterSlice';
+import { useSelector } from "react-redux"
 
 
 export const Header = () => {
 
-
-  const [popupIsOpened, setPopupIsOpened] = useState(false);
+  const user = useSelector((state) => state.counter.user)
   const [isAuthorized, setIsAuthorized] = useState(false);
+  const dispatch = useDispatch();
 
-  const openPopup = () => {
-    setPopupIsOpened(true);
-  };
-  const closePopup = () => {
-    setPopupIsOpened(false);
+  useEffect(() => {
+    user ? setIsAuthorized(true) : setIsAuthorized(false)
+    console.log(user, isAuthorized, 'user')
+  }, [user])
+
+
+  const handleLogout = () => {
+    dispatch(logout());
+    setIsAuthorized(false)
   };
 
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-body-tertiary" variant="light" bg="light" data-bs-theme="light"> 
       <Container fluid>
         <Navbar.Brand href="/">Solar Future</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -44,16 +49,15 @@ export const Header = () => {
               Выйти
             </span>
           ) : (
-            <span onClick={openPopup}>
+            <span onClick={() => dispatch(openPopup())}>
               Войти
             </span>
           )}
           </Button>
         </Navbar.Collapse>
       </Container>
-      <Overlay isOpened={popupIsOpened} close={closePopup} />
-      <Popup isOpened={popupIsOpened} close={closePopup}>
-        <AuthForm close={closePopup} setAuth={setIsAuthorized}/>
+      <Popup >
+        <AuthForm setAuth={setIsAuthorized}/>
       </Popup>
     </Navbar>
 

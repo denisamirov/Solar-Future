@@ -19,8 +19,44 @@ export const POST = async (url, data) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         })
+        // if (response.status !== 200) {
+        //     throw new Error('Ошибка POST-запроса')
+        // }
+        const result = await response.json()
+        return result
+    }
+    catch (error) {
+        return error
+    }
+}
+
+export const PUT = async (url, data) => {
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        })
         if (response.status !== 200) {
-            throw new Error('Ошибка POST-запроса')
+            throw new Error('Ошибка PUT-запроса')
+        }
+        const result = await response.json()
+        return result
+    }
+    catch (error) {
+        return error
+    }
+}
+
+
+export const DELETE = async (url) => {
+    try {
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' }
+        })
+        if (response.status !== 200) {
+            throw new Error('Ошибка DELETE-запроса')
         }
         const result = await response.json()
         return result
@@ -82,6 +118,11 @@ export const getMe = async (url, jwt) => {
         const result = await response.json()
         return result
     } catch (error) {
-        return error
+        return null
     }
 }
+
+
+export const isResponseOk = (response) => {
+    return !(response instanceof Error)
+  }

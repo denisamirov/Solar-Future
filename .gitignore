@@ -1,3 +1,5 @@
 /node_modules/
 .env
 /mongo/db/
+/api/node_modules
+/api/compass-export/

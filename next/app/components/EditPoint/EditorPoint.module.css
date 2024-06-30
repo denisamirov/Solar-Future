@@ -1,0 +1,15 @@
+.edit-point__card {
+    max-width: 300px;
+    height: 350px;
+}
+
+.edit-point__card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.edit-point__img {
+    height: 150px;
+    width: 150px
+}

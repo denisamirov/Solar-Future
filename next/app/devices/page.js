@@ -1,33 +1,33 @@
+'use client'
 import { CardsList } from '../components/CardsList/CardsList'
+import { useSelector } from 'react-redux'
+import { BASE_URL } from '../../api/config'
+import { useEffect, useState } from 'react'
+import { GET } from '../../api/api-utils'
+import Styles from './devices.module.css'
 export default function page() {
-    const data = [{
-        name: "Солнечная панель",
-        type: "Солнечная панель",
-        img: "https://img.freepik.com/free-photo/solar-panel-with-thumbs-up_1156-350.jpg?t=st=1715282241~exp=1715285841~hmac=fbaaa92c333e43576a5def0a90043ac45b9e3819d230ff416acbf1f937bb6149&w=740",
-        voltage: "Определяем...",
-        state: "Определяем...",
-        description: "Расположена на балконе в Царево",
-        port: 7070,
-        channels: {
-            "relay-1": 7,
-            "state": true
+
+    const [data, setData] = useState([])
+    const user = useSelector((state) => state.counter.user)
+
+    useEffect(() => {
+        if (user) {
+            GET(BASE_URL + '/users/devices/' + user._id)
+                .then((res) => setData(res))
         }
-    },
-    {
-        name: "Солнечная панель",
-        type: "Солнечная панель",
-        img: "https://img.freepik.com/free-photo/solar-panel-with-thumbs-up_1156-350.jpg?t=st=1715282241~exp=1715285841~hmac=fbaaa92c333e43576a5def0a90043ac45b9e3819d230ff416acbf1f937bb6149&w=740",
-        voltage: "Определяем...",
-        state: "Определяем...",
-        description: "Расположена на балконе в Царево",
-        port: 7071,
-        channels: {
-            "relay-1": 7
-        }
-    }]
+    }, [user])
+
+
     return (
         <>
-            <CardsList data={data} />
+            {data ?
+                <div className={Styles["devices__container"]}>
+                    <CardsList data={data.digital_pins} params={"digital_pins"} key={"digital_pins"} />
+                    <CardsList data={data.analog_sensors} params={"analog_sensors"} key={"analog_sensors"} />
+                </div>
+                :
+                <h1>Loading...</h1>
+            }
         </>
     )
 }
