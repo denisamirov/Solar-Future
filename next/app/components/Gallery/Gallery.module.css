@@ -29,6 +29,8 @@
 
 .gallery__card {
     border: none;
+    display: flex;
+    align-items: center;
 }
 
 .gallery__text {
