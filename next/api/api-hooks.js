@@ -23,13 +23,12 @@ export const useGetMe = () => {
   const dispatch = useDispatch()
   const router = useRouter()
   const pathname = usePathname()
-  
+
   useEffect(() => {
     async function fetchData() {
       const jwt = getJWT()
       checkAccessIsGaranteed(jwt, dispatch, pathname, router)
       checkTokenIsCorrect(jwt, dispatch)
-      
     }
     fetchData()
   }, [])
@@ -49,7 +48,8 @@ const checkTokenIsCorrect = async (jwt, dispatch) => {
 
 
 const checkAccessIsGaranteed = async (jwt, dispatch, pathname, router) => {
-  if (!jwt && pathname != '/') {
+  console.log(typeof jwt)
+  if ((!jwt || jwt=='null') && pathname != '/') {
     !allowedResorses.includes(pathname) ? ifUserNoAuth(router, dispatch) : null
     return
   }
@@ -84,10 +84,10 @@ export const checkUserIsAdmin = () => {
   useEffect(() => {
     user && GET(endpoints.user + user._id).then((res) => {
       dispatch(setUserData(res))
-      
+
       res.role == 'admin' ? null : checkAccessForUserNoAdmin(dispatch, pathname, router)
-      
+
     })
-    
+
   }, [user])
 }

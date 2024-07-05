@@ -59,7 +59,7 @@
 
     .ContentBlock__content {
         box-sizing: border-box;
-        padding: 60px 80px;
-        text-align: justify;
+        padding: 20px 20px;
+        text-align: center;
     }
 }

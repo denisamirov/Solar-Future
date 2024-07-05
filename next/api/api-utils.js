@@ -19,9 +19,6 @@ export const POST = async (url, data) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         })
-        // if (response.status !== 200) {
-        //     throw new Error('Ошибка POST-запроса')
-        // }
         const result = await response.json()
         return result
     }
