@@ -15,7 +15,7 @@ export const metadata = {
     {
       rel: 'icon',
       sizes: '128x128',
-      url: './sun.ico',
+      url: './sun.png',
     }]
 };
 
