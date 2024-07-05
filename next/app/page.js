@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className={Styles["main__container"]}>
       <Cover
-        imgPath={'/images/main.png'}
+        imgPath={'/images/main.webp'}
         title={"Solar Future"}
         description={`Решения по автоматизации в сфере альтернативных источников энергии`}
         btnTitle={'Узнать больше'} />
