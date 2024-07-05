@@ -9,7 +9,6 @@ export default function page() {
 
     const [data, setData] = useState([])
     const user = useSelector((state) => state.counter.user)
-
     useEffect(() => {
         if (user) {
             GET(BASE_URL + '/users/devices/' + user._id)

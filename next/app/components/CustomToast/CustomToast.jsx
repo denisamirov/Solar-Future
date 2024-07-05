@@ -25,7 +25,7 @@ export const CustomToast = () => {
             <Toast.Header>
                 <span>☀️</span>
                 <strong className="me-auto">SolarBot</strong>
-                <small>11 mins ago</small>
+                <small>...1 секунду назад</small>
             </Toast.Header>
             <Toast.Body>{pushBody}</Toast.Body>
         </Toast>
